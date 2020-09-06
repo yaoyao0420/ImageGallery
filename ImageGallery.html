@@ -1,0 +1,140 @@
+<!DOCTYPE html>  
+<html>  
+<head>  
+    <meta charset="UTF-8">  
+    <meta name="viewport" content="width=device-width, initial-scale=1">  
+    <title> Image Gallery </title>
+    <meta name="keywords" content="" />
+    <meta name="description" content="" /> 
+    <style type="text/css">  
+        body{
+            font-size: 100%; 
+            font-family: "Times New Roman"; 
+            overflow-x: hidden; 
+            overflow-y: auto;}.viewport{max-width: 640px; min-width: 300px; margin: 0 auto;}
+        button{
+            width: 100px; 
+            font-family: "Times New Roman";
+
+        }
+        #imagebox{  
+            margin: 0 auto;  
+            width: 100%; 
+            height: 650px;  
+            position: relative;  
+            text-align: center;  
+        }  
+        #buttonbox{
+            display: none;
+            background: #000040;
+            padding: 10px;
+            position: relative;  
+            text-align: center;  
+        }
+        #imagebox{
+          display: none;
+        }
+        #exitbutton{
+          display: none;
+        }
+    </style>  
+    <script>  
+       window.onload=function(){  
+       var prev=document.getElementById("prev");  
+       var next=document.getElementById("next");
+       var exit=document.getElementById("exit");
+       var img=document.getElementsByTagName("img")[0];  
+          
+       var imgArr=["https://i.loli.net/2020/09/06/XBVi32oIvcqHRNL.jpg",
+                   "https://i.loli.net/2020/09/06/eidMf53uPoDcQC6.jpg",
+                   "https://i.loli.net/2020/09/06/Rty5dVFxgEsafi8.jpg",
+                   "https://i.loli.net/2020/09/06/3uaSVJQd4qcNl8t.jpg",
+                   "https://i.loli.net/2020/09/06/gJEu5xR7D68vkBp.jpg",
+                   "https://i.loli.net/2020/09/06/yzYEDFM3NfACgx8.jpg",
+                   "https://i.loli.net/2020/09/06/mpuXBGaRTzq4Chj.jpg",
+                   "https://i.loli.net/2020/09/06/pG2Eq6Dc1Xx3y5A.jpg",
+                   "https://i.loli.net/2020/09/06/T8B9aiKQAhl6bo1.jpg",
+                   "https://i.loli.net/2020/09/06/FOEecqlj8pSy7VL.jpg",
+                   "https://i.loli.net/2020/09/06/s1lhjI9MEaQx2bP.jpg",
+                   "https://i.loli.net/2020/09/06/6kpXr93BbjfVSdE.jpg",
+                   "https://i.loli.net/2020/09/06/BX3xAzsJCH85cZS.jpg",
+                   "https://i.loli.net/2020/09/06/mXdv6R3cyS87Y4L.jpg",
+                   "https://i.loli.net/2020/09/06/TJFig2P6tBVDsba.jpg",
+                   "https://i.loli.net/2020/09/06/tX6ydrM1RnkCQhF.jpg",
+                   "https://i.loli.net/2020/09/06/M5xcUjnSb43Ee7z.jpg",
+                   "https://i.loli.net/2020/09/06/BgR7zWpNxHIAsCY.jpg"];  
+       var index=0;  
+       var info=document.getElementById("info");  
+       info.innerHTML=(index+1)+" / "+imgArr.length;  
+  
+       prev.onclick=function(){  
+           index--;  
+           if(index<0){  
+               index=imgArr.length -1;  
+           }  
+           img.src=imgArr[index];  
+           info.innerHTML=(index+1)+" / "+imgArr.length;  
+       } ;  
+       next.onclick=function(){  
+           index++;  
+           if(index>imgArr.length -1){  
+               index=0;  
+           }  
+           img.src=imgArr[index];  
+           info.innerHTML=(index+1)+" / "+imgArr.length;  
+       };  
+       exit.onclick=function(){
+           img.src=imgArr[imgArr.length-1];
+       };
+    } 
+    function change_div(id){
+      if(id=='experimentdescription'){
+        document.getElementById("experimentdescription").style.display='block';
+        document.getElementById("imagebox").style.display='none';
+        document.getElementById("buttonbox").style.display='none';
+        document.getElementById("exitbutton").style.display='none';
+      }
+      if(id=='imagebox'){
+        document.getElementById("experimentdescription").style.display='none';
+        document.getElementById("imagebox").style.display='block';
+        document.getElementById("buttonbox").style.display='block';
+        document.getElementById("exitbutton").style.display='none';
+      }
+      if(id=='exitbutton'){
+        document.getElementById("experimentdescription").style.display='none';
+        document.getElementById("imagebox").style.display='none';
+        document.getElementById("buttonbox").style.display='none';
+        document.getElementById("exitbutton").style.display='block';
+      }
+    } 
+    </script>  
+</head>  
+  
+<body>
+  <div id="experimentdescription">
+        <h1 align="center"><u>Experiment Description</u></h1>
+        <h3>1. In this experiment, you will watch several categories of images, and we will record your facial expressions while watching. 
+        </br>2. Click the “START” button to watch next image.
+        </br>3. Please note that these images may cause some negative emotions in you, so please click the “EXIT” button when you feel uncomfortable to end this experiment. </h3>
+        </br>
+        </br>    
+        <div align=center><button onclick="change_div('imagebox')"> START </button></div>
+    </div>
+  <div id="imagebox">  
+        <p id="info"></p>  
+        <img src="https://i.loli.net/2020/09/06/XBVi32oIvcqHRNL.jpg" alt="Sorry, the image cannot show because some problems may happened." height="600px" />
+        </br></br>
+  </div>
+  <div id="exitbutton" align=center>
+        <h3> Thanks very much for participating in our experiment!</h3>
+        <button onclick="change_div('experimentdescription')"> BACK </button>
+  </div>
+  <div id="buttonbox">
+        <button id="prev"> PREV </button>
+        <button id="next"> NEXT </button>
+        </br></br>
+        <button onclick="change_div('exitbutton')"> EXIT </button>
+  </div>  
+</body>  
+  
+</html>
