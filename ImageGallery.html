@@ -2,7 +2,7 @@
 <html>  
 <head>  
     <meta charset="UTF-8">  
-    <meta name="viewport" content="width=device-width, initial-scale=1">  
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=yes" />
     <title> Image Gallery </title>
     <meta name="keywords" content="" />
     <meta name="description" content="" /> 
@@ -11,11 +11,20 @@
             font-size: 100%; 
             font-family: "Times New Roman"; 
             overflow-x: hidden; 
-            overflow-y: auto;}.viewport{max-width: 640px; min-width: 300px; margin: 0 auto;}
-        button{
-            width: 100px; 
+            overflow-y: auto;}
+        button { 
             font-family: "Times New Roman";
-
+            padding:8px;  
+            color: #FFFFCC; 
+            background-color: #000000; 
+            text-align: center; 
+            vertical-align: middle;  
+            font-weight: 900; 
+            font-size:125% 
+            border: none;
+            border-radius: 40px 10px; 
+            width: 100px;
+            height: 50px;
         }
         #imagebox{  
             margin: 0 auto;  
@@ -26,7 +35,6 @@
         }  
         #buttonbox{
             display: none;
-            background: #000040;
             padding: 10px;
             position: relative;  
             text-align: center;  
@@ -37,12 +45,27 @@
         #exitbutton{
           display: none;
         }
+        #exit{
+          font-family: "Times New Roman";
+          padding:8px;  
+          color: #FFFFFF; 
+          background-color: #FF0000;
+          text-align: center; 
+          vertical-align: middle;  
+          font-weight: 900; 
+          font-size:125% 
+          border: none;
+          border-radius: 40px 10px; 
+          width: 100px;
+          height: 50px;
+          position: absolute;
+          right:100px;
+        }
     </style>  
     <script>  
        window.onload=function(){  
        var prev=document.getElementById("prev");  
        var next=document.getElementById("next");
-       var exit=document.getElementById("exit");
        var img=document.getElementsByTagName("img")[0];  
           
        var imgArr=["https://i.loli.net/2020/09/06/XBVi32oIvcqHRNL.jpg",
@@ -83,9 +106,6 @@
            img.src=imgArr[index];  
            info.innerHTML=(index+1)+" / "+imgArr.length;  
        };  
-       exit.onclick=function(){
-           img.src=imgArr[imgArr.length-1];
-       };
     } 
     function change_div(id){
       if(id=='experimentdescription'){
@@ -132,8 +152,7 @@
   <div id="buttonbox">
         <button id="prev"> PREV </button>
         <button id="next"> NEXT </button>
-        </br></br>
-        <button onclick="change_div('exitbutton')"> EXIT </button>
+        <input type=button background="FF0000" onclick="change_div('exitbutton')" value="EXIT" id="exit"></input>
   </div>  
 </body>  
   
